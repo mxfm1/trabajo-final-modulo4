@@ -16,3 +16,10 @@ class Producto:
     def __post_init__(self):
         self.impuesto()
         
+    def buscar(condicion,productos):
+        for producto in productos:
+            if producto.sku == condicion:
+                return producto
+        return None
+    
+

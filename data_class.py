@@ -1,5 +1,6 @@
 import json
 from clientes import Cliente
+from productos import Producto
 
 
 class Datos:
@@ -44,4 +45,11 @@ class Datos:
     def guardar_productos(self):
         with open('productos.json', 'w') as archivo:
             archivo.write(json.dumps(self.productos, default=lambda o: o.__dict__, indent=4))
+            
+    def recuperar_productos(self):
+        try:
+            with open('productos.json', 'r') as archivo:
+                self.productos = json.loads(archivo.read(), object_hook=lambda d: Producto(**d))
+        except:
+            self.productos = []
     

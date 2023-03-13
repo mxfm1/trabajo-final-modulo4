@@ -2,6 +2,8 @@ from dataclasses import asdict
 import os
 from clientes import Cliente
 from productos import Producto
+from vendedores import Vendedor
+from data_class import Datos
 
 def end():
     print('')
@@ -9,7 +11,7 @@ def end():
     return val
 
 def menu_principal():
-    os.system("cls")
+    # os.system("cls")
     print("MENÚ PRINCIPAL - SISTEMA DE VENTAS")
     print("1. Menú Clientes")
     print("2. Menú Vendedores")
@@ -40,7 +42,7 @@ def menu_productos():
     os.system("cls")
     print("-----> MENÚ PRODUCTOS <-----")
     print("1. Agregar Productos")
-    print("2. Eliminar Productosr")
+    print("2. Eliminar Productos")
     print("3. Modificar Productos")
     print("4. Listar Productos")
     print("0. Volver")
@@ -53,11 +55,18 @@ def listar_clientes(clientes):
     print('=============================================')
     for cliente in clientes:
         print(f'Cliente: {cliente.nombre} {cliente.apellido}  RUT: {cliente.rut}')
+        
+def listar_productos(productos):
+    print('=============================================')
+    print('----------Listado de Productos----------')
+    print('=============================================')
+    for producto in productos:
+        print(producto)
 
 def editar_clientes(accion:str,cliente:Cliente) -> Cliente:
     os.system("cls")
     print("=============================================")
-    print(accion.upper(), "CLIENTE")
+    print("----------> ",accion.upper(), "CLIENTE <----------")
     print("=============================================")
     registro = { "rut": "", "nombre": "", "apellido": "" }
     if cliente is not None:
@@ -112,6 +121,33 @@ def editar_productos(accion:str, producto: Producto) -> Producto:
         registro['valor_neto'] = valor_neto
     return Producto(sku=registro["sku"],nombre=registro["nombre"],categoria=registro["categoria"],proveedor=registro["proveedor"],stock=registro['stock'],valor_neto=registro['valor_neto'])
 
+def crear_producto():
+    print('=============================================')
+    print('Agregar Producto')
+    print('=============================================')
+    
+    sku = int(input('Ingresa el SKU del producto: '))
+    nombre = str(input('Ingresa el nombre del producto: '))
+    categoria = str(input('Ingresa la categoria del producto: '))
+    proveedor = str(input('Ingresa el proveedor del producto: '))
+    stock = int(input('Ingresa el stock del producto: '))
+    valor_neto = int(input('Ingresa el valor neto del producto: '))
+    
+    if sku != '':
+        p_sku = sku
+    if nombre != '':
+        p_nombre = nombre
+    if categoria != '':
+        p_categoria = categoria
+    if proveedor != '':
+        p_proveedor = proveedor
+    if stock != '':
+        p_stock = stock
+    if valor_neto != '':
+        p_valor_neto = valor_neto
+    return Producto(p_sku,p_nombre,p_categoria,p_proveedor,p_stock,p_valor_neto)
+
+
 def encontrar_clientes(clientes):
     print('=============================================')
     print('Buscar Cliente')
@@ -125,5 +161,20 @@ def encontrar_clientes(clientes):
             print('Cliente no encontrado. Porfavor inténtelo nuevamente')
         else:
             return cliente
-
+        
+def encontrar_producto(productos):
+    condicion = int(input('Ingresa el SKU del producto que quieras comprar: '))
+    if condicion is None:
+        return None
+    else:
+        producto = Producto.buscar(condicion,productos)
+        if producto == None:
+            print('Producto no encontrado. Porfavor inténtelo nuevamente')
+        else:
+            print(f'El producto seleccionado es: {producto.nombre}')
+            return producto
+        
+def vender_producto(producto,cliente):
+    detalles =  Vendedor.vender(producto,cliente)
+    Datos.ventas.append(detalles)
     

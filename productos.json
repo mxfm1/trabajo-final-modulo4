@@ -1,0 +1,11 @@
+[
+    {
+        "sku": 299,
+        "nombre": "palta",
+        "categoria": "hortalizas",
+        "proveedor": "dole",
+        "stock": 300,
+        "valor_neto": 25,
+        "_impuesto": 4.75
+    }
+]

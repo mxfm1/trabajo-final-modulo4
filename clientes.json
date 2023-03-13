@@ -1,20 +1,20 @@
 [
     {
-        "rut": "12",
-        "nombre": "filip",
-        "apellido": "max",
-        "_saldo": 11649
+        "rut": "19976",
+        "nombre": "felipe",
+        "apellido": "machuca",
+        "_saldo": 17656
     },
     {
-        "rut": "18",
-        "nombre": "lucas",
-        "apellido": "moura",
-        "_saldo": 13922
+        "rut": "11624",
+        "nombre": "alejandro",
+        "apellido": "machuca",
+        "_saldo": 24932
     },
     {
-        "rut": "17",
-        "nombre": "juan",
-        "apellido": "guarnizo",
-        "_saldo": 18407
+        "rut": "14448",
+        "nombre": "karina",
+        "apellido": "arredondo",
+        "_saldo": 24023
     }
 ]
