@@ -1,0 +1,20 @@
+[
+    {
+        "rut": "12",
+        "nombre": "filip",
+        "apellido": "max",
+        "_saldo": 11649
+    },
+    {
+        "rut": "18",
+        "nombre": "lucas",
+        "apellido": "moura",
+        "_saldo": 13922
+    },
+    {
+        "rut": "17",
+        "nombre": "juan",
+        "apellido": "guarnizo",
+        "_saldo": 18407
+    }
+]
